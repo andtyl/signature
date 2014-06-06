@@ -12,6 +12,6 @@
 
     },
     "autoload": {
-        "psr-0": { "Signature\\": "src/" }
+        "psr-4": { "Signature\\": "src/" }
     }    
 }
