@@ -1,0 +1,17 @@
+{
+    "name": "andtyl/signature",
+    "description": "Signature generation/validation for API:s",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Tylegard",
+            "email": "andtyl@gmail.com"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-0": { "Signature\\": "src/" }
+    }    
+}
