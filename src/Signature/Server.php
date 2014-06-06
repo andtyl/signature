@@ -15,7 +15,6 @@ class Server
      */
     protected $time_span = 600;
 
-
     /**
      * Constructor
      *
@@ -27,7 +26,7 @@ class Server
     }
 
     /**
-     * Authorize a request (signature parameter)
+     * Authenticate a request (signature parameter)
      *
      * @param string $secret Secret
      * @param string $method HTTP Method
@@ -35,7 +34,7 @@ class Server
      * @param array $params Params
      * @return array Params
      */
-    public function authorize($secret, $method, $path, $params)
+    public function authenticate($secret, $method, $path, $params)
     {
         if (!isset($params['auth_key'])) {
             throw new AuthenticationException("auth_key is missing");
