@@ -5,15 +5,36 @@ use Signature\Exception\AuthenticationException;
 
 class Server
 {
+    /**
+     * @var Signer Instance of Signer
+     */
     protected $signer;
 
+    /**
+     * @var int Seconds allowed difference between request timestamp and server time
+     */
     protected $time_span = 600;
 
+
+    /**
+     * Constructor
+     *
+     * @param Signer $signer Signer Instance
+     */
     public function __construct(Signer $signer)
     {
         $this->signer = $signer;
     }
 
+    /**
+     * Authorize a request (signature parameter)
+     *
+     * @param string $secret Secret
+     * @param string $method HTTP Method
+     * @param string $path URL Path
+     * @param array $params Params
+     * @return array Params
+     */
     public function authorize($secret, $method, $path, $params)
     {
         if (!isset($params['auth_key'])) {
@@ -38,9 +59,14 @@ class Server
         return true;
     }
 
+    /**
+     * Validate timestamp
+     *
+     * @param int $timestamp Unix Timestamp
+     * @return bool Is OK
+     */
     protected function validateTimestamp($timestamp)
     {
         return abs((time() - $timestamp)) > $this->time_span;    
     }
-
 }

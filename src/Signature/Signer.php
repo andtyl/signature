@@ -3,11 +3,15 @@ namespace Signature;
 
 class Signer
 {
-    public function __construct()
-    {
-
-    }
-    
+    /**
+     * Create a signature
+     *
+     * @param string $secret Secret
+     * @param string $method HTTP Method
+     * @param string $path URL path
+     * @param array $params Params
+     * @return string Signature
+     */
     public function sign($secret, $method, $path, $params)
     {
         $method = strtoupper($method);
